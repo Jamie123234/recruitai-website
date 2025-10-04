@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecruitAI - The Future of Professional Hiring</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals with a Terracotta Accent -->
+    <!-- Application Structure Plan: A comprehensive single-page marketing website designed to serve two distinct audiences: candidates and companies. The information architecture follows a narrative flow:
+        1.  Hero: Grabs attention with the core value proposition.
+        2.  How it Works: Simplifies the user journey into three clear steps.
+        3.  Value Proposition (Dual Audience): A tabbed section to provide tailored information for "Candidates" and "Companies," allowing users to self-segment.
+        4.  AI Feature Spotlight: A dedicated section to showcase the unique "AI Career Co-Pilot," the key differentiator.
+        5.  Social Proof/Market: Uses dynamic stat counters to build credibility and show momentum.
+        6.  Pricing: A clear, transparent pricing table for the B2B audience.
+        7.  FAQ: An accordion to handle common objections for both audiences.
+        This structure was chosen to guide each user type through a journey of discovery, education, and conversion, all within a single, seamless page.
+    -->
+    <!-- Visualization & Content Choices: 
+        - Hero Mockup: Goal: Inform. Method: Styled HTML/CSS to mimic the app UI. Interaction: None. Justification: Instantly visualizes the "swipe" concept without needing complex graphics.
+        - Stat Counters: Goal: Impress. Method: JavaScript number animation. Interaction: Triggers on scroll. Justification: Creates a dynamic and engaging way to present market scale and platform growth.
+        - Tabbed Interface: Goal: Organize. Method: JS to toggle content visibility. Interaction: Click. Justification: The best way to present parallel information for two different audiences without cluttering the page.
+        - FAQ Accordion: Goal: Organize. Method: JS to toggle answer visibility. Interaction: Click. Justification: Condenses a large amount of text into a manageable, user-driven format.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FDFBF8;
+            color: #3D3D3D;
+        }
+        .accent-bg { background-color: #E87A5D; }
+        .accent-text { color: #E87A5D; }
+        .secondary-bg { background-color: #F4EAE0; }
+        .hero-gradient {
+            background: radial-gradient(circle at 50% 0%, rgba(244, 234, 224, 0.6) 0%, rgba(253, 251, 248, 0) 40%);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #E87A5D;
+        }
+        .cta-primary {
+            background-color: #E87A5D;
+            color: white;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .cta-primary:hover {
+            background-color: #d96a4d;
+            transform: translateY(-2px);
+        }
+        .cta-secondary {
+            background-color: transparent;
+            color: #E87A5D;
+            border: 1px solid #E87A5D;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .cta-secondary:hover {
+            background-color: #F4EAE0;
+        }
+        .tab.active {
+            border-bottom-color: #E87A5D;
+            color: #E87A5D;
+            font-weight: 600;
+        }
+        .faq-item summary::-webkit-details-marker {
+            display: none;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header id="header" class="bg-FDFBF8/80 backdrop-blur-md sticky top-0 z-50 transition-shadow duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <a href="#" class="text-3xl font-bold accent-text">RecruitAI</a>
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <a href="#how-it-works" class="nav-link text-gray-600 font-medium">How It Works</a>
+                    <a href="#features" class="nav-link text-gray-600 font-medium">Features</a>
+                    <a href="#pricing" class="nav-link text-gray-600 font-medium">Pricing</a>
+                    <a href="#faq" class="nav-link text-gray-600 font-medium">FAQ</a>
+                </nav>
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hidden sm:block cta-secondary px-5 py-2.5 rounded-full font-semibold text-sm show-modal-btn">For Companies</a>
+                    <a href="#" class="cta-primary px-5 py-2.5 rounded-full font-semibold text-sm shadow-sm show-modal-btn">For Professionals</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="hero" class="relative py-20 md:py-32 hero-gradient overflow-hidden">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold tracking-tighter mb-6">Your Next Career Move Finds You.</h1>
+                <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-10">RecruitAI is the intelligent marketplace where top companies apply to you. Showcase your skills, get AI-powered career guidance, and let opportunities come knocking.</p>
+                <div class="flex justify-center items-center space-x-4">
+                    <a href="#" class="cta-primary px-8 py-4 rounded-full font-bold text-base shadow-lg show-modal-btn">Start Your Journey</a>
+                    <a href="#" class="cta-secondary px-8 py-4 rounded-full font-bold text-base show-modal-btn">Hire Top Talent</a>
+                </div>
+            </div>
+             <div class="mt-16 relative flex justify-center items-center" aria-hidden="true">
+                <div class="w-full max-w-sm md:max-w-md h-96 bg-white rounded-3xl shadow-2xl p-4 border border-gray-200/50 flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="w-8 h-8 bg-gray-200 rounded-full"></span>
+                        <span class="text-xl font-bold accent-text">RecruitAI</span>
+                        <span class="w-8 h-8 bg-gray-200 rounded-full"></span>
+                    </div>
+                    <div class="relative flex-grow bg-gray-100 rounded-2xl flex items-center justify-center p-4 overflow-hidden">
+                        <div class="absolute top-0 w-full h-full flex flex-col justify-center items-center space-y-4 pt-4 pb-24">
+                            <div class="w-5/6 h-24 bg-white rounded-xl shadow-md p-3 animate-pulse">
+                                <div class="w-1/4 h-4 bg-gray-300 rounded mb-2"></div>
+                                <div class="w-3/4 h-3 bg-gray-200 rounded"></div>
+                                <div class="w-1/2 h-3 bg-gray-200 rounded mt-1"></div>
+                            </div>
+                            <div class="w-5/6 h-24 bg-white rounded-xl shadow-lg p-3 z-10 scale-105">
+                                <div class="flex items-center mb-2">
+                                    <span class="w-8 h-8 bg-orange-200 rounded-full mr-2"></span>
+                                    <div class="w-1/2 h-4 bg-gray-300 rounded"></div>
+                                </div>
+                                <div class="w-full h-3 bg-gray-200 rounded"></div>
+                                <div class="w-3/4 h-3 bg-gray-200 rounded mt-1"></div>
+                            </div>
+                             <div class="w-5/6 h-24 bg-white rounded-xl shadow-md p-3 opacity-50 animate-pulse">
+                                <div class="w-1/4 h-4 bg-gray-300 rounded mb-2"></div>
+                                <div class="w-3/4 h-3 bg-gray-200 rounded"></div>
+                                <div class="w-1/2 h-3 bg-gray-200 rounded mt-1"></div>
+                            </div>
+                        </div>
+                        <div class="absolute bottom-4 left-0 right-0 flex justify-around z-20">
+                            <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm border-4 border-red-200 flex items-center justify-center text-red-500 text-3xl font-bold shadow-lg">&times;</div>
+                            <div class="w-16 h-16 rounded-full bg-white/80 backdrop-blur-sm border-4 border-green-200 flex items-center justify-center text-green-500 text-3xl font-bold shadow-lg">&#10003;</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="how-it-works" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">A Smarter Path to Success</h2>
+                    <p class="mt-4 text-lg text-gray-600">Three simple steps to unlock your professional potential.</p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12 text-center">
+                    <div class="p-6">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto accent-bg rounded-full text-white text-4xl font-bold shadow-lg">1</div>
+                        <h3 class="mt-6 text-xl font-semibold">Create Your Profile</h3>
+                        <p class="mt-2 text-gray-600">Build a dynamic profile that showcases your skills, experience, and career aspirations—far beyond a traditional CV.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto accent-bg rounded-full text-white text-4xl font-bold shadow-lg">2</div>
+                        <h3 class="mt-6 text-xl font-semibold">Get AI Insights</h3>
+                        <p class="mt-2 text-gray-600">Our AI "Career Co-Pilot" analyzes your profile to provide personalized advice on how to grow and improve.</p>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center justify-center h-20 w-20 mx-auto accent-bg rounded-full text-white text-4xl font-bold shadow-lg">3</div>
+                        <h3 class="mt-6 text-xl font-semibold">Get Matched</h3>
+                        <p class="mt-2 text-gray-600">Relax while leading companies review your profile and send interview requests directly to you.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="w-full max-w-3xl mx-auto">
+                    <div class="flex justify-center border-b border-gray-300 mb-10">
+                        <button id="tab-candidates" class="tab active text-lg py-4 px-6 border-b-2 border-transparent">For Professionals</button>
+                        <button id="tab-companies" class="tab text-lg text-gray-500 py-4 px-6 border-b-2 border-transparent">For Companies</button>
+                    </div>
+                    <div id="content-candidates" class="tab-content">
+                        <div class="text-center">
+                            <h3 class="text-3xl font-bold mb-4">Take Control of Your Career</h3>
+                            <p class="text-lg text-gray-600 mb-8">Stop chasing jobs. Start attracting opportunities with a platform built for your growth.</p>
+                            <ul class="space-y-4 text-left max-w-md mx-auto">
+                                <li class="flex items-center"><span class="accent-text text-2xl mr-4">&#10003;</span><span><strong class="font-semibold">AI Career Co-Pilot:</strong> Get free, personalized advice to enhance your skills and CV.</span></li>
+                                <li class="flex items-center"><span class="accent-text text-2xl mr-4">&#10003;</span><span><strong class="font-semibold">Complete Privacy:</strong> Your profile is only visible to companies you approve. You control the conversation.</span></li>
+                                <li class="flex items-center"><span class="accent-text text-2xl mr-4">&#10003;</span><span><strong class="font-semibold">Quality Over Quantity:</strong> Receive relevant, high-quality interview requests from top employers.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div id="content-companies" class="tab-content hidden">
+                         <div class="text-center">
+                            <h3 class="text-3xl font-bold mb-4">Hire Smarter, Not Harder</h3>
+                            <p class="text-lg text-gray-600 mb-8">Access a curated marketplace of motivated, skilled professionals and reduce your hiring time by up to 70%.</p>
+                             <ul class="space-y-4 text-left max-w-md mx-auto">
+                                <li class="flex items-center"><span class="accent-text text-2xl mr-4">&#10003;</span><span><strong class="font-semibold">Curated Talent Pool:</strong> Connect with pre-vetted candidates actively or passively seeking new roles.</span></li>
+                                <li class="flex items-center"><span class="accent-text text-2xl mr-4">&#10003;</span><span><strong class="font-semibold">Intelligent Matching:</strong> Our AI goes beyond keywords to find you the perfect fit based on skills and culture.</span></li>
+                                <li class="flex items-center"><span class="accent-text text-2xl mr-4">&#10003;</span><span><strong class="font-semibold">Cost-Effective Hiring:</strong> Ditch expensive agency fees with our transparent subscription plans.</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="ai-spotlight" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <span class="font-semibold accent-text">OUR KEY DIFFERENTIATOR</span>
+                        <h2 class="text-3xl md:text-4xl font-bold mt-2">Meet Your AI Career Co-Pilot</h2>
+                        <p class="mt-4 text-lg text-gray-600">RecruitAI is more than a marketplace. We invest in your professional growth. Our unique AI analyzes your profile to provide actionable insights, helping you become a more valuable candidate on and off our platform.</p>
+                        <ul class="mt-6 space-y-3">
+                            <li class="flex items-start"><span class="inline-block w-5 h-5 accent-bg rounded-full mt-1 mr-4"></span><span>Identify your core strengths and areas for improvement.</span></li>
+                            <li class="flex items-start"><span class="inline-block w-5 h-5 accent-bg rounded-full mt-1 mr-4"></span><span>Get personalized recommendations for courses and learning material.</span></li>
+                            <li class="flex items-start"><span class="inline-block w-5 h-5 accent-bg rounded-full mt-1 mr-4"></span><span>Receive concrete tips to optimize your CV and stand out.</span></li>
+                        </ul>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-2xl shadow-2xl">
+                        <div class="bg-white rounded-lg p-6">
+                            <h4 class="font-bold">Career Snapshot: Marketing Manager</h4>
+                            <div class="mt-4">
+                                <h5 class="text-sm font-semibold text-green-600">STRENGTHS</h5>
+                                <p class="text-sm text-gray-700 mt-1">✓ Digital Strategy ✓ SEO/SEM ✓ Team Leadership</p>
+                            </div>
+                            <div class="mt-4">
+                                <h5 class="text-sm font-semibold text-orange-600">AREAS TO IMPROVE</h5>
+                                <p class="text-sm text-gray-700 mt-1">○ Data Analytics ○ Public Speaking</p>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-gray-200">
+                                <h5 class="text-sm font-semibold accent-text">AI RECOMMENDATION</h5>
+                                <p class="text-sm text-gray-700 mt-1">Consider a course in Google Analytics to strengthen your data skills. This would make you a top-tier candidate for Head of Marketing roles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stats" class="py-20 secondary-bg">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                    <div>
+                        <p class="text-5xl font-extrabold accent-text stat-counter" data-target="10">0</p>
+                        <p class="mt-2 text-lg font-medium text-gray-700">Million+ Skilled Professionals in SA</p>
+                    </div>
+                    <div>
+                        <p class="text-5xl font-extrabold accent-text stat-counter" data-target="5000">0</p>
+                        <p class="mt-2 text-lg font-medium text-gray-700">Companies Hiring Now</p>
+                    </div>
+                    <div>
+                        <p class="text-5xl font-extrabold accent-text stat-counter" data-target="1500">0</p>
+                        <p class="mt-2 text-lg font-medium text-gray-700">Successful Matches Last Month</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="pricing" class="py-20">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Transparent Pricing for Companies</h2>
+                    <p class="mt-4 text-lg text-gray-600">Choose a plan that scales with your hiring needs. Always free for professionals.</p>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="border border-gray-200 rounded-2xl p-8 flex flex-col">
+                        <h3 class="text-xl font-bold">Startup</h3>
+                        <p class="mt-2 text-gray-600">For small teams making their first key hires.</p>
+                        <p class="mt-6 text-4xl font-bold">R3,000<span class="text-lg font-medium text-gray-500"> / mo</span></p>
+                        <ul class="mt-8 space-y-4 text-gray-700 flex-grow">
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>1 Active Job Post</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>2 User Seats</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>AI Candidate Matching</li>
+                        </ul>
+                        <a href="#" class="mt-8 w-full cta-secondary text-center px-6 py-3 rounded-full font-semibold show-modal-btn">Get Started</a>
+                    </div>
+                    <div class="border-2 accent-border rounded-2xl p-8 flex flex-col relative shadow-2xl">
+                        <p class="absolute top-0 -translate-y-1/2 accent-bg text-white px-4 py-1 rounded-full text-sm font-semibold">Most Popular</p>
+                        <h3 class="text-xl font-bold">Growth</h3>
+                        <p class="mt-2 text-gray-600">For growing businesses scaling their teams.</p>
+                        <p class="mt-6 text-4xl font-bold">R7,500<span class="text-lg font-medium text-gray-500"> / mo</span></p>
+                        <ul class="mt-8 space-y-4 text-gray-700 flex-grow">
+                             <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>5 Active Job Posts</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>5 User Seats</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>AI Candidate Matching</li>
+                             <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>Priority Support</li>
+                        </ul>
+                        <a href="#" class="mt-8 w-full cta-primary text-center px-6 py-3 rounded-full font-semibold show-modal-btn">Choose Plan</a>
+                    </div>
+                    <div class="border border-gray-200 rounded-2xl p-8 flex flex-col">
+                        <h3 class="text-xl font-bold">Enterprise</h3>
+                        <p class="mt-2 text-gray-600">For large organizations with ongoing hiring needs.</p>
+                        <p class="mt-6 text-4xl font-bold">Custom</p>
+                        <ul class="mt-8 space-y-4 text-gray-700 flex-grow">
+                             <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>Unlimited Job Posts</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>Unlimited Seats</li>
+                            <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>Advanced Analytics</li>
+                             <li class="flex items-center"><span class="text-green-500 mr-3">&#10003;</span>Dedicated Account Manager</li>
+                        </ul>
+                         <a href="#" class="mt-8 w-full cta-secondary text-center px-6 py-3 rounded-full font-semibold show-modal-btn">Contact Sales</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold">Frequently Asked Questions</h2>
+                </div>
+                <div class="space-y-4">
+                    <details class="faq-item group bg-gray-50 rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-lg">
+                            Is RecruitAI free for professionals?
+                            <span class="transform transition-transform duration-300 group-open:-rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Yes! RecruitAI is 100% free for candidates. Our mission is to empower professionals, and that includes free access to our platform and AI Career Co-Pilot.</p>
+                    </details>
+                    <details class="faq-item group bg-gray-50 rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-lg">
+                            How is my privacy protected as a candidate?
+                            <span class="transform transition-transform duration-300 group-open:-rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">Your profile is anonymous until you decide to accept a connection request from a company. You have full control over who sees your information and when.</p>
+                    </details>
+                    <details class="faq-item group bg-gray-50 rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-lg">
+                            What makes RecruitAI different from other job boards?
+                            <span class="transform transition-transform duration-300 group-open:-rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">We are not a job board. We are a talent marketplace. Instead of you applying for jobs, companies apply to you. This flipped model, combined with our powerful AI matching, results in higher quality connections and less wasted time.</p>
+                    </details>
+                    <details class="faq-item group bg-gray-50 rounded-lg p-6 cursor-pointer">
+                        <summary class="flex justify-between items-center font-semibold text-lg">
+                            What kind of companies hire on RecruitAI?
+                            <span class="transform transition-transform duration-300 group-open:-rotate-180">&#9660;</span>
+                        </summary>
+                        <p class="mt-4 text-gray-600">We partner with a wide range of South Africa's most innovative companies, from fast-growing startups to established industry leaders across all sectors.</p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Coming Soon Modal -->
+    <div id="coming-soon-modal" class="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white rounded-2xl shadow-xl w-full max-w-sm text-center p-8 transform transition-all" style="--tw-scale-x: .95; --tw-scale-y: .95; opacity: 0;">
+            <h3 class="text-2xl font-bold accent-text mb-4">Coming Soon!</h3>
+            <p class="text-gray-600 mb-6">We're putting the finishing touches on our sign-up process. Get ready to revolutionize your career journey!</p>
+            <button id="close-modal-btn" class="cta-primary px-6 py-3 rounded-full font-semibold w-full">Got it!</button>
+        </div>
+    </div>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                 <div class="md:col-span-2">
+                    <h3 class="text-2xl font-bold">RecruitAI</h3>
+                    <p class="mt-4 text-gray-400 max-w-sm">The intelligent way to grow your career and build your team. Join the future of professional hiring in South Africa.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold">Platform</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#how-it-works" class="text-gray-400 hover:text-white">How It Works</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">For Professionals</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">For Companies</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                 <div>
+                    <h4 class="font-semibold">Resources</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#faq" class="text-gray-400 hover:text-white">FAQ</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Blog</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-700 pt-8 text-center text-sm text-gray-400">
+                <p>&copy; 2025 RecruitAI. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabCandidates = document.getElementById('tab-candidates');
+            const tabCompanies = document.getElementById('tab-companies');
+            const contentCandidates = document.getElementById('content-candidates');
+            const contentCompanies = document.getElementById('content-companies');
+
+            function switchTabs(activeTab, inactiveTab, activeContent, inactiveContent) {
+                activeTab.classList.add('active');
+                inactiveTab.classList.remove('active');
+                activeContent.classList.remove('hidden');
+                inactiveContent.classList.add('hidden');
+            }
+
+            tabCandidates.addEventListener('click', () => {
+                switchTabs(tabCandidates, tabCompanies, contentCandidates, contentCompanies);
+            });
+
+            tabCompanies.addEventListener('click', () => {
+                switchTabs(tabCompanies, tabCandidates, contentCompanies, contentCandidates);
+            });
+
+            const statCounters = document.querySelectorAll('.stat-counter');
+            const statsSection = document.getElementById('stats');
+
+            const animateCounter = (counter) => {
+                const target = +counter.getAttribute('data-target');
+                const duration = 2000;
+                const stepTime = Math.abs(Math.floor(duration / target));
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += 1;
+                    if(target > 1000) current += Math.floor(Math.random()*100);
+                    if(current >= target) {
+                        clearInterval(timer);
+                        counter.innerText = new Intl.NumberFormat('en-ZA').format(target).replace(/,/g, ' ');
+                         if(target > 1000000) counter.innerText = (target / 1000000) + 'M+';
+                    } else {
+                         counter.innerText = new Intl.NumberFormat('en-ZA').format(current).replace(/,/g, ' ');
+                    }
+                }, 1);
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        statCounters.forEach(counter => {
+                            if (counter.innerText === '0') {
+                                animateCounter(counter);
+                            }
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (statsSection) {
+                observer.observe(statsSection);
+            }
+            
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('shadow-md');
+                } else {
+                    header.classList.remove('shadow-md');
+                }
+            });
+
+            const modal = document.getElementById('coming-soon-modal');
+            const modalContent = modal.querySelector('div');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+            const showModalBtns = document.querySelectorAll('.show-modal-btn');
+
+            function showModal() {
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modalContent.style.opacity = '1';
+                    modalContent.style.transform = 'scale(1)';
+                }, 50);
+            }
+
+            function hideModal() {
+                 modalContent.style.opacity = '0';
+                 modalContent.style.transform = 'scale(0.95)';
+                 setTimeout(() => {
+                    modal.classList.add('hidden');
+                }, 200);
+            }
+
+            showModalBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    showModal();
+                });
+            });
+
+            closeModalBtn.addEventListener('click', hideModal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    hideModal();
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>
+
+
